@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header card-header-icon" >Drop Elements</div>
+        <div class="card-content" id="div2"  (drop)="drop($event)" (dragover)="allowDrop($event)">
+             <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <!-- <div class="card">
+                        <div class="card-header card-header-icon">Drop here</div>
+                        <div class="card-content" >
+
+                       </div>
+                    </div> -->
+          <h4 class="card-title">Forms</h4>
+          <form [formGroup]="invoiceForm">
+              <div class="form-group" >
+                  <button   class="btn btn-md btn-primary" (click)="addNewRow()" ><i class="fa fa-plus"></i></button>
+                  <div formArrayName="itemRows">
+
+                      <div class="row" *ngFor="let checks of invoiceForm.controls.itemRows.controls; let i=index"  [formGroupName]="i">
+                          <span>{{checks.length}}</span>
+                          <label for="reportPeriod" class="control-label">Data Reported by :#{{ i + 1 }}</label>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-8 input-group">
+                                  <div class="row" >
+                                    <div class="input-group">
+                                        <div class="col-md-4">
+                                            <mat-checkbox formControlName="itemname">staff</mat-checkbox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-checkbox formControlName="itemnameDoctor">Doctor</mat-checkbox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-checkbox formControlName="itemAdmin">Admin</mat-checkbox>
+                                        </div>
+                                        <span  class="input-group-btn">
+                                            <div class="">
+                                                <button *ngIf="invoiceForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </span>
+                                    </div>
+
+
+
+                                  </div>
+
+
+                                </div>
+
+                              </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+
+
+                </div>
+                <fieldset>
+                    <label for="personaldata" class="control-label">Personal Data</label>
+                    <button   class="btn btn-md btn-primary" (click)="personalRowsAddbtn()" ><i class="fa fa-plus"></i></button>
+                  <div formArrayName="personalData">
+                  <div class="row" *ngFor="let checks of invoiceForm.controls.personalData.controls; let i=index"  [formGroupName]="i">
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="First Name"  formControlName="firstname">
+                              </mat-form-field>
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                          <div class="col-md-6" >
+                              <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Middle Name"  formControlName="middleName">
+                                </mat-form-field>
+                          </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Last Name"  formControlName="lastName">
+                                  </mat-form-field>
+                            </div>
+
+                          </div>
+                          <div class="input-group-append">
+                              <button *ngIf="invoiceForm.controls.personalData.controls.length > 1" (click)="deletePersonalData(i)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                </fieldset>
+
+          </form>
+             </div>
+         </div>
+       </div>
+
+
+
+
+    </div>
+
+  </div>
+  <div class="col-md-4">
+<div class="card">
+    <div class="card-header card-header-icon" >Elements</div>
+    <div  id="div1" class="card-content">
+        <button type="text" id="input" draggable="true"  (dragstart)="drag($event)" >input</button>
+        <button type="text" id="textarea" draggable="true"  (dragstart)="drag($event)">textarea</button>
+        <button type="text" id="checkbox" draggable="true"  (dragstart)="drag($event)">checkbox</button>
+        <button type="text" id="dropdown" draggable="true"  (dragstart)="drag($event)">dropdown</button>
+        <button type="text" id="radio" draggable="true"  (dragstart)="drag($event)">Radio</button>
+        <button type="text" id="btn" draggable="true"  (dragstart)="drag($event)">Button</button>
+        <!-- <pre>{{invoiceForm.value | json}}</pre> -->
+
+</div>
+</div>
+  </div>
+
+ </div>
+</div>
